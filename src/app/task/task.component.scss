@@ -1,0 +1,87 @@
+@import '../font.imports.scss';
+@import '../mixins.scss';
+
+$input-bg: rgb(194, 230, 179);
+
+@mixin task-div-default {
+    border: 1px solid black;
+    padding: 15px;    
+    margin-top: 10px;
+}
+
+.task-div {
+    //@include task-div-default();  
+    
+    border: 1px solid black;
+    padding: 15px;    
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+
+    &.done {    
+        background-color: rgb(199, 238, 135);    
+    }
+
+    &.undone {
+        background-color: rgb(231, 235, 238);
+    }
+
+    &.failed {
+        background-color: rgb(243, 134, 134);
+    }
+}
+
+.task-div__buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //background-color: black;
+}
+
+@media (max-width: 750px) {    
+    .task-div__buttons {
+        flex-direction: column;        
+    } 
+}
+
+.task-div__button {
+    @include button-style();
+    margin-top: 10px;
+}
+
+.task-div__button:hover {
+    background: #294681;
+}
+
+.taskTitle {
+    font-weight: 900;
+}
+
+.task-div__description-edit {
+    width: 100%;
+    background-color: $input-bg;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.task-div__title {
+    width: 100%;
+    background-color: $input-bg;
+    border: none;    
+    border-bottom: 1px solid black;
+    line-height: 28px;
+}
+
+.task-div__edit-cancel-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task-div__button-edit {
+    @include button-style();
+    margin-top: 10px;
+}
+
+.task-div__button-cancel {
+    @include button-style();
+    margin-top: 10px;
+}

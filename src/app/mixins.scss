@@ -1,0 +1,16 @@
+@mixin button-style() {
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #4676D7;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 16px;
+    flex-grow: 1;
+    margin: 5px;
+
+    :hover {
+        background: #294681;
+    }
+    //width: 30%;
+}

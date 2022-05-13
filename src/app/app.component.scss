@@ -1,0 +1,44 @@
+$input-bg: rgb(194, 230, 179);
+
+@import 'font.imports.scss';
+@import 'mixins.scss';
+
+.main-block {
+    width: 50%;
+    margin:0 auto;
+    font-family: 'Roboto', sans-serif;
+    min-width: 400px;
+}
+
+.add-task {
+    background-color: rgb(215, 253, 200);
+    border: 1px solid black;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.add-task__title {
+    width: 100%;
+    background-color: $input-bg;
+    border: none;    
+    border-bottom: 1px solid black;
+}
+
+.add-task__description {
+    width: 100%;
+    background-color: $input-bg;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.main-block_button-create-task {
+    @include button-style();
+}
+
+.main-block_button-create-task:hover {
+    background: #294681;
+}
+
+.main-block_button-add-task {
+    @include button-style();
+}

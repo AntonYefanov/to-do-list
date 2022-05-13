@@ -1,0 +1,35 @@
+<div class="task-div" [ngClass]="{
+    done: task.state === 'done',
+    undone: task.state === 'undone',
+    failed: task.state === 'failed'
+}">
+    <div *ngIf="!showCahngeForm" class="task-div__show-block">
+        <h1 class="taskTitle">{{index + 1}}. {{task.title}}</h1>
+        <p>{{task.date | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+        <p>{{task.description}}</p>    
+    </div>
+
+    <div *ngIf="showCahngeForm"class="task-div__edit-block">
+        <label>Название</label>
+        <br>
+        <input type="text" name="title" [(ngModel)]="taskTitle" class="task-div__title" id='taskTitle'/>    
+        <label>Описание</label>
+        <br>
+        <textarea  rows="5" cols="45" name="description" [(ngModel)]="taskDescription"  class="task-div__description-edit"></textarea>   
+        <div class="task-div__edit-cancel-buttons">
+            <button (click)="changeTask()" class="task-div__button-edit">Сохранить</button> 
+            <button (click)="cancelChange()" class="task-div__button-cancel">Отмена</button> 
+        </div>        
+    </div>
+
+    
+    <div class="task-div__buttons">        
+        <button (click)="doneTask()" *ngIf="task.state == 'undone'" class='task-div__button'>Выполнить</button>
+        <button (click)="failTask()" *ngIf="task.state == 'undone'" class='task-div__button'>Провалить</button>
+        <button (click)="undoneTask()" *ngIf="task.state == 'done' || task.state == 'failed'" class='task-div__button'>Отметить незавершённым</button>
+        <button (click)="showChangeForm()" *ngIf="!showCahngeForm" class='task-div__button'>Изменить</button>
+        <button (click)="deleteTask()" class='task-div__button'>Удалить</button>
+    </div>
+    
+</div>
+
