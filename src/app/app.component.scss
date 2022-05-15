@@ -42,3 +42,7 @@ $input-bg: rgb(194, 230, 179);
 .main-block_button-add-task {
     @include button-style();
 }
+
+.main-block_button-add-task:hover {
+    background: #294681;
+}

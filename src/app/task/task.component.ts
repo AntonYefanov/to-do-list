@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { TaskState, Task, ChangedState, ChangedTask } from '../app.component';
+import { TaskState } from '../enums';
+import { Task, ChangedState, ChangedTask } from '../interfaces';
 
 @Component({
   selector: 'app-task',

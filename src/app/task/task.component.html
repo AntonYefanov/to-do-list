@@ -10,12 +10,16 @@
     </div>
 
     <div *ngIf="showCahngeForm"class="task-div__edit-block">
-        <label>Название</label>
-        <br>
-        <input type="text" name="title" [(ngModel)]="taskTitle" class="task-div__title" id='taskTitle'/>    
-        <label>Описание</label>
-        <br>
-        <textarea  rows="5" cols="45" name="description" [(ngModel)]="taskDescription"  class="task-div__description-edit"></textarea>   
+        <div>
+            <label>Название</label>        
+            <input type="text" name="title" [(ngModel)]="taskTitle" class="task-div__title" id='taskTitle'/>    
+        </div>
+        
+        <div>
+            <label>Описание</label>        
+            <textarea  rows="5" cols="45" name="description" [(ngModel)]="taskDescription"  class="task-div__description-edit"></textarea>   
+        </div>
+        
         <div class="task-div__edit-cancel-buttons">
             <button (click)="changeTask()" class="task-div__button-edit">Сохранить</button> 
             <button (click)="cancelChange()" class="task-div__button-cancel">Отмена</button> 

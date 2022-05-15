@@ -1,32 +1,15 @@
 import { Component, NgModule } from '@angular/core';
+import { Task, ChangedState, ChangedTask } from './interfaces';
+import { TaskState } from './enums';
+import { LocalStorageService } from './local-storage.service'
 
-export enum TaskState {
-  undone = "undone",
-  done = "done",
-  failed = "failed"
-};
 
-export interface Task {
-  title: string;
-  description: string;
-  date: Date;
-  state: TaskState;
-};
-
-export interface ChangedState {
-  index: number;
-  state: TaskState;
-}
-
-export interface ChangedTask {
-  index: number;
-  task: Task;
-}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'], 
+  providers: [LocalStorageService]
 })
 export class AppComponent {
   tasks: Task[] = [{title: "Придумать что делать", description: "Добавить новых заданий", date: new Date(), state: TaskState.undone} ];
@@ -34,8 +17,9 @@ export class AppComponent {
   taskDescription: string = "";
   toggle:boolean = false;
 
-  constructor() {
-    let temp = localStorage.getItem("tasksArray");
+  constructor(private lsService: LocalStorageService) {
+    //let temp = localStorage.getItem("tasksArray");
+    let temp = lsService.getTaskFromLS();
     if (temp != null){
       this.tasks = JSON.parse(temp);
     }    
@@ -50,7 +34,8 @@ export class AppComponent {
       let newTask: Task = {title: taskTitle, description: taskDescription, date: new Date(), state: TaskState.undone};
       this.tasks.push(newTask);    
 
-      localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+      //localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+      this.lsService.setTaskToLS(this.tasks)
 
       this.taskTitle = "";
       this.taskDescription = "";
@@ -62,16 +47,19 @@ export class AppComponent {
 
   onDelete(del:any) {
     this.tasks.splice(del, 1);
-    localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+    //localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+    this.lsService.setTaskToLS(this.tasks)
   }
 
   onStateChanged(chs: ChangedState) {
     this.tasks[chs.index].state = chs.state;
-    localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+    //localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+    this.lsService.setTaskToLS(this.tasks)
   }
 
   onTaskChanged(cht: ChangedTask) {
     this.tasks[cht.index] = cht.task;
-    localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+    //localStorage.setItem("tasksArray", JSON.stringify(this.tasks));
+    this.lsService.setTaskToLS(this.tasks)
   }
 }

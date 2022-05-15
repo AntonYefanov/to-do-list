@@ -3,14 +3,16 @@
     <button (click)="showAddForm()" class="main-block_button-create-task">Добавить дело</button>
 
     <div *ngIf="toggle" class="add-task"> 
-        <label>Название</label>
-        <br>
-        <input type="text" name="taskTitle" [(ngModel)]="taskTitle" class="add-task__title" id='taskTitle'/>    
-        <br>
-        <label>Описание</label>
-        <br>
-        <textarea rows="5" cols="45" name="taskDescription" [(ngModel)]="taskDescription" class="add-task__description"></textarea>    
-        <br>
+        <div>
+            <label>Название</label>        
+            <input type="text" name="taskTitle" [(ngModel)]="taskTitle" class="add-task__title" id='taskTitle'/>            
+        </div>
+        
+        <div>
+            <label>Описание</label>        
+            <textarea rows="5" cols="45" name="taskDescription" [(ngModel)]="taskDescription" class="add-task__description"></textarea>            
+        </div>
+        
         <button (click)="addTask(taskTitle, taskDescription)" class="main-block_button-add-task">Добавить</button>
     </div>
     <app-task 

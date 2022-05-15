@@ -2,6 +2,7 @@
 @import '../mixins.scss';
 
 $input-bg: rgb(194, 230, 179);
+$bunnon-bg-hover: #294681;
 
 @mixin task-div-default {
     border: 1px solid black;
@@ -37,7 +38,7 @@ $input-bg: rgb(194, 230, 179);
     //background-color: black;
 }
 
-@media (max-width: 750px) {    
+@media (max-width: 1000px) {    
     .task-div__buttons {
         flex-direction: column;        
     } 
@@ -49,7 +50,7 @@ $input-bg: rgb(194, 230, 179);
 }
 
 .task-div__button:hover {
-    background: #294681;
+    background: $bunnon-bg-hover;
 }
 
 .taskTitle {
@@ -81,7 +82,16 @@ $input-bg: rgb(194, 230, 179);
     margin-top: 10px;
 }
 
+.task-div__button-edit:hover {
+    background: $bunnon-bg-hover;
+}
+
 .task-div__button-cancel {
     @include button-style();
     margin-top: 10px;
+}
+
+.task-div__button-cancel:hover {
+    @include button-style();
+    background: $bunnon-bg-hover;
 }
